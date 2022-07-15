@@ -17,17 +17,26 @@ public class Statistics : MonoBehaviour
     public static int statPoints = 15;
 
     [SerializeField]
-    Button _strButton;
+    Button _plusStrButton;
     [SerializeField]
-    Button _agiButton;
+    Button _minusStrButton;
     [SerializeField]
-    Button _intButton;
+    Button _plusAgiButton;
+    [SerializeField]
+    Button _minusAgiButton;
+    [SerializeField]
+    Button _plusIntButton;
+    [SerializeField]
+    Button _minusIntButton;
 
     void Start()
     {
-        _strButton.onClick.AddListener(delegate { ChangeStat(StatType.Strength, 1); });
-        _agiButton.onClick.AddListener(delegate { ChangeStat(StatType.Agility, 1); });
-        _intButton.onClick.AddListener(delegate { ChangeStat(StatType.Intelligence, 1); });
+        _plusStrButton.onClick.AddListener(delegate { ChangeStat(StatType.Strength, 1); });
+        _minusStrButton.onClick.AddListener(delegate { ChangeStat(StatType.Strength, -1); });
+        _plusAgiButton.onClick.AddListener(delegate { ChangeStat(StatType.Agility, 1); });
+        _minusAgiButton.onClick.AddListener(delegate { ChangeStat(StatType.Agility, -1); });
+        _plusIntButton.onClick.AddListener(delegate { ChangeStat(StatType.Intelligence, 1); });
+        _minusIntButton.onClick.AddListener(delegate { ChangeStat(StatType.Intelligence, -1); });
     }
 
     void Update()
