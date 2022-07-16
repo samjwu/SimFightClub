@@ -17,6 +17,13 @@ public class Statistics : MonoBehaviour
     public static int intelligence = 0;
     public static int statPoints = 15;
 
+    public static double hp;
+    public static double damage;
+    public static double dodgeChance;
+    public static double attackSpeed;
+    public static double defense;
+    public static double criticalStrikeDamage;
+
     [SerializeField]
     Button _plusStrButton;
     [SerializeField]
@@ -43,15 +50,15 @@ public class Statistics : MonoBehaviour
 
     void Start()
     {
-        _plusStrButton.onClick.AddListener(delegate { ChangeStat(StatType.Strength, 1); });
-        _minusStrButton.onClick.AddListener(delegate { ChangeStat(StatType.Strength, -1); });
-        _plusAgiButton.onClick.AddListener(delegate { ChangeStat(StatType.Agility, 1); });
-        _minusAgiButton.onClick.AddListener(delegate { ChangeStat(StatType.Agility, -1); });
-        _plusIntButton.onClick.AddListener(delegate { ChangeStat(StatType.Intelligence, 1); });
-        _minusIntButton.onClick.AddListener(delegate { ChangeStat(StatType.Intelligence, -1); });
+        _plusStrButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Strength, 1); });
+        _minusStrButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Strength, -1); });
+        _plusAgiButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Agility, 1); });
+        _minusAgiButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Agility, -1); });
+        _plusIntButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Intelligence, 1); });
+        _minusIntButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Intelligence, -1); });
     }
 
-    void ChangeStat(StatType type, int value)
+    void ChangeStatPoints(StatType type, int value)
     {
         switch (type)
         {
@@ -69,7 +76,20 @@ public class Statistics : MonoBehaviour
         }
 
         statPoints -= value;
+
+        CalculateStatistics();
+
         UpdateStatisticsText(type);
+    }
+
+    void CalculateStatistics()
+    {
+        hp = strength * 25;
+        damage = strength;
+        dodgeChance = agility;
+        attackSpeed = agility + 100d;
+        defense = intelligence / 4d;
+        criticalStrikeDamage = intelligence * 100d + 100d;
     }
 
     void UpdateStatisticsText(StatType type)
@@ -91,12 +111,13 @@ public class Statistics : MonoBehaviour
 
         _pointText.text = string.Format("Stat Points: {0}", statPoints);
         _statText.text = string.Format(
-            "Hit Points: {}\n" +
-            "Damage: {}\n" +
-            "Dodge Chance: {}\n" +
-            "Attack Speed: {}\n" +
-            "Defense: {}\n" +
-            "Critical Strike Damage: {}"
+            "Hit Points: {0}\n" +
+            "Damage: {1}\n" +
+            "Dodge Chance: {2}%\n" +
+            "Attack Speed: {3}%\n" +
+            "Defense: {4}\n" +
+            "Critical Strike Damage: {5}%",
+            hp, damage, dodgeChance, attackSpeed, defense, criticalStrikeDamage
             );
     }
 }
