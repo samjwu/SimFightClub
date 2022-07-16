@@ -332,7 +332,6 @@ GameObject:
   - component: {fileID: 170542741}
   - component: {fileID: 170542743}
   - component: {fileID: 170542742}
-  - component: {fileID: 170542744}
   m_Layer: 5
   m_Name: StatsText
   m_TagString: Untagged
@@ -457,24 +456,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170542740}
   m_CullTransparentMesh: 1
---- !u!114 &170542744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170542740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cfdc83a509ed0e48a650a8e55d60f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _plusStrButton: {fileID: 1881132181}
-  _minusStrButton: {fileID: 723209722}
-  _plusAgiButton: {fileID: 1418930567}
-  _minusAgiButton: {fileID: 511382238}
-  _plusIntButton: {fileID: 1234995288}
-  _minusIntButton: {fileID: 166799371}
 --- !u!1 &273226108
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +591,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273226108}
   m_CullTransparentMesh: 1
+--- !u!1 &353588643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353588645}
+  - component: {fileID: 353588644}
+  m_Layer: 0
+  m_Name: StatsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &353588644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353588643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfdc83a509ed0e48a650a8e55d60f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plusStrButton: {fileID: 1881132181}
+  _minusStrButton: {fileID: 723209722}
+  _plusAgiButton: {fileID: 1418930567}
+  _minusAgiButton: {fileID: 511382238}
+  _plusIntButton: {fileID: 1234995288}
+  _minusIntButton: {fileID: 166799371}
+--- !u!4 &353588645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353588643}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511382236
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +999,7 @@ RectTransform:
   - {fileID: 166799370}
   - {fileID: 10479685}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2069,5 +2100,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
