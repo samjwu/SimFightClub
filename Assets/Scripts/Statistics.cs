@@ -63,12 +63,24 @@ public class Statistics : MonoBehaviour
         switch (type)
         {
             case StatType.Strength:
+                if (-value > strength)
+                {
+                    return;
+                }
                 strength += value;
                 break;
             case StatType.Agility:
+                if (-value > agility)
+                {
+                    return;
+                }
                 agility += value;
                 break;
             case StatType.Intelligence:
+                if (-value > intelligence)
+                {
+                    return;
+                }
                 intelligence += value;
                 break;
             default:
@@ -84,12 +96,12 @@ public class Statistics : MonoBehaviour
 
     void CalculateStatistics()
     {
-        hp = strength * 25;
-        damage = strength;
-        dodgeChance = agility;
-        attackSpeed = agility + 100d;
-        defense = intelligence / 4d;
-        criticalStrikeDamage = intelligence * 100d + 100d;
+        hp = 100 + strength * 25;
+        damage = 1 + strength;
+        dodgeChance = 10 + agility * 5;
+        attackSpeed = 100 + agility * 10;
+        defense = intelligence / 4;
+        criticalStrikeDamage = 100 + intelligence * 100;
     }
 
     void UpdateStatisticsText(StatType type)
