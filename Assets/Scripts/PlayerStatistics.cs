@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Statistics : MonoBehaviour
+public class PlayerStatistics : MonoBehaviour
 {
     public enum StatType
     {
