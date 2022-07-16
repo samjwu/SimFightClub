@@ -56,6 +56,10 @@ public class Statistics : MonoBehaviour
         _minusAgiButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Agility, -1); });
         _plusIntButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Intelligence, 1); });
         _minusIntButton.onClick.AddListener(delegate { ChangeStatPoints(StatType.Intelligence, -1); });
+
+        CalculateStatistics();
+
+        UpdateStatisticsText();
     }
 
     void ChangeStatPoints(StatType type, int value)
@@ -91,7 +95,7 @@ public class Statistics : MonoBehaviour
 
         CalculateStatistics();
 
-        UpdateStatisticsText(type);
+        UpdateStatisticsText();
     }
 
     void CalculateStatistics()
@@ -104,24 +108,13 @@ public class Statistics : MonoBehaviour
         criticalStrikeDamage = 100 + intelligence * 100;
     }
 
-    void UpdateStatisticsText(StatType type)
+    void UpdateStatisticsText()
     {
-        switch (type)
-        {
-            case StatType.Strength:
-                _strText.text = string.Format("Strength: {0}", strength);
-                break;
-            case StatType.Agility:
-                _agiText.text = string.Format("Agility: {0}", agility);
-                break;
-            case StatType.Intelligence:
-                _intText.text = string.Format("Intelligence: {0}", intelligence);
-                break;
-            default:
-                throw new Exception("Invalid stat type");
-        }
-
+        _strText.text = string.Format("Strength: {0}", strength);
+        _agiText.text = string.Format("Agility: {0}", agility);
+        _intText.text = string.Format("Intelligence: {0}", intelligence);
         _pointText.text = string.Format("Stat Points: {0}", statPoints);
+
         _statText.text = string.Format(
             "Hit Points: {0}\n" +
             "Damage: {1}\n" +
