@@ -45,22 +45,27 @@ public class FightManager : MonoBehaviour
 
         string playerExplanation;
         string enemyExplanation;
+
         if (isPlayerAccurate)
         {
             _currentEnemyHp -= playerDamageDealt;
+            playerExplanation = $"Player dealt {playerDamageDealt} damage to {_enemyName}!";
         }
         else
         {
-
+            playerExplanation = "Player's attack missed!";
         }
 
         if (isEnemyAccurate)
         {
             _currentPlayerHp -= enemyDamageDealt;
+            enemyExplanation = $"{_enemyName.text} dealt {enemyDamageDealt} damage to Player!";
         }
         else
         {
-
+            enemyExplanation = $"{_enemyName.text}'s attack missed!";
         }
+
+        _explanation.text = playerExplanation + '\n' + enemyExplanation;
     }
 }
