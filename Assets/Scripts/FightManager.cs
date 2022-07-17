@@ -22,4 +22,9 @@ public class FightManager : MonoBehaviour
         _enemyName.text = _currentEnemy.enemyName;
         _enemyImage.texture = _currentEnemy.enemyPicture;
     }
+
+    void Update()
+    {
+        
+    }
 }
