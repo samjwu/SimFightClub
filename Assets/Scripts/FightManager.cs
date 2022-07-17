@@ -18,6 +18,7 @@ public class FightManager : MonoBehaviour
 
     double _currentPlayerHp;
     double _currentEnemyHp;
+    int _turnNumber;
 
     void Start()
     {
@@ -27,9 +28,12 @@ public class FightManager : MonoBehaviour
 
         _currentPlayerHp = PlayerStatistics.hp;
         _currentEnemyHp = _currentEnemy.hp;
+        _turnNumber = 0;
+
+        InvokeRepeating(nameof(CalculateFightTurn), 1.0f, 1.0f);
     }
 
-    void Update()
+    void CalculateFightTurn()
     {
         double playerHitChance = 100 - _currentEnemy.dodgeChance;
         double enemyHitChance = 100 - PlayerStatistics.dodgeChance;
@@ -43,13 +47,15 @@ public class FightManager : MonoBehaviour
         double playerDamageDealt = PlayerStatistics.damage * (isPlayerHitCritical ? PlayerStatistics.criticalStrikeDamage : 1) - _currentEnemy.defense;
         double enemyDamageDealt = _currentEnemy.damage * (isEnemyHitCritical ? _currentEnemy.criticalStrikeDamage / 100 : 1) - PlayerStatistics.defense;
 
+        _turnNumber++;
+        string turnExplanation = $"Turn {_turnNumber}";
         string playerExplanation;
         string enemyExplanation;
 
         if (isPlayerAccurate)
         {
             _currentEnemyHp -= playerDamageDealt;
-            playerExplanation = $"Player dealt {playerDamageDealt} damage to {_enemyName}!";
+            playerExplanation = $"Player dealt {playerDamageDealt} damage to {_enemyName.text}!";
         }
         else
         {
@@ -66,6 +72,6 @@ public class FightManager : MonoBehaviour
             enemyExplanation = $"{_enemyName.text}'s attack missed!";
         }
 
-        _explanation.text = playerExplanation + '\n' + enemyExplanation;
+        _explanation.text = turnExplanation + '\n' + playerExplanation + '\n' + enemyExplanation;
     }
 }
