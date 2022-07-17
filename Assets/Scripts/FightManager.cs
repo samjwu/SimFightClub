@@ -58,7 +58,7 @@ public class FightManager : MonoBehaviour
 
         if (isPlayerAccurate)
         {
-            _currentEnemyHp -= playerDamageDealt;
+            _currentEnemyHp = Mathf.Max(0, (float)(_currentEnemyHp - playerDamageDealt));
             _enemyHp.text = $"HP: {_currentEnemyHp}";
             playerExplanation = $"Player dealt {playerDamageDealt} damage to {_enemyName.text}!";
         }
@@ -69,7 +69,7 @@ public class FightManager : MonoBehaviour
 
         if (isEnemyAccurate)
         {
-            _currentPlayerHp -= enemyDamageDealt;
+            _currentPlayerHp = Mathf.Max(0, (float)(_currentPlayerHp - enemyDamageDealt));
             _playerHp.text = $"HP: {_currentPlayerHp}";
             enemyExplanation = $"{_enemyName.text} dealt {enemyDamageDealt} damage to Player!";
         }
