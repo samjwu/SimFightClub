@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: DylerTurden
   m_EditorClassIdentifier: 
   enemyName: Dyler Turden
-  picture: {fileID: 0}
-  image: {fileID: 0}
   enemyPicture: {fileID: 2800000, guid: fc63d7884bedf0742ba992f3391f761f, type: 3}
+  hp: 500
+  damage: 1
+  dodgeChance: 0
+  attackSpeed: 100
+  defense: 0
+  criticalStrikeDamage: 100
