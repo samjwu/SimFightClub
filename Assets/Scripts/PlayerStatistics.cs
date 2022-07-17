@@ -110,19 +110,17 @@ public class PlayerStatistics : MonoBehaviour
 
     void UpdateStatisticsText()
     {
-        _strText.text = string.Format("Strength: {0}", strength);
-        _agiText.text = string.Format("Agility: {0}", agility);
-        _intText.text = string.Format("Intelligence: {0}", intelligence);
-        _pointText.text = string.Format("Stat Points: {0}", statPoints);
+        _strText.text = $"Strength: {strength}";
+        _agiText.text = $"Agility: {agility}";
+        _intText.text = $"Intelligence: {intelligence}";
+        _pointText.text = $"Stat Points: {statPoints}";
 
-        _statText.text = string.Format(
-            "Hit Points: {0}\n" +
-            "Damage: {1}\n" +
-            "Dodge Chance: {2}%\n" +
-            "Attack Speed: {3}%\n" +
-            "Defense: {4}\n" +
-            "Critical Strike Damage: {5}%",
-            hp, damage, dodgeChance, attackSpeed, defense, criticalStrikeDamage
-            );
+        _statText.text =
+            $"Hit Points: {hp}\n" +
+            $"Damage: {damage}\n" +
+            $"Dodge Chance: {dodgeChance}%\n" +
+            $"Attack Speed: {attackSpeed}%\n" +
+            $"Defense: {defense}\n" +
+            $"Critical Strike Damage: {criticalStrikeDamage}%";
     }
 }

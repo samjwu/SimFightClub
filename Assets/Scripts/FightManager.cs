@@ -43,6 +43,8 @@ public class FightManager : MonoBehaviour
         double playerDamageDealt = PlayerStatistics.damage * (isPlayerHitCritical ? PlayerStatistics.criticalStrikeDamage : 1) - _currentEnemy.defense;
         double enemyDamageDealt = _currentEnemy.damage * (isEnemyHitCritical ? _currentEnemy.criticalStrikeDamage / 100 : 1) - PlayerStatistics.defense;
 
+        string playerExplanation;
+        string enemyExplanation;
         if (isPlayerAccurate)
         {
             _currentEnemyHp -= playerDamageDealt;
