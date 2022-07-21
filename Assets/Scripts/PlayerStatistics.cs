@@ -12,10 +12,12 @@ public class PlayerStatistics : MonoBehaviour
         Intelligence = 2
     }
 
+    public const int STARTING_STAT_POINTS = 15;
+
     public static int strength = 0;
     public static int agility = 0;
     public static int intelligence = 0;
-    public static int statPoints = 15;
+    public static int statPoints = STARTING_STAT_POINTS;
 
     public static double hp;
     public static double damage;
