@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b03228b3515d0a7458d2c57673708f4e, type: 3}
-  m_Name: DylerTurden
+  m_Name: DankFrux
   m_EditorClassIdentifier: 
-  enemyName: Dyler Turden
-  enemyPicture: {fileID: 2800000, guid: fc63d7884bedf0742ba992f3391f761f, type: 3}
-  hp: 100
-  damage: 5
+  enemyName: Dank Frux
+  enemyPicture: {fileID: 2800000, guid: 6ba47d5b2b161ef4cb7dfcf42be90148, type: 3}
+  hp: 200
+  damage: 10
   dodgeChance: 0
   attackSpeed: 100
-  defense: 1
+  defense: 3
   criticalStrikeDamage: 150

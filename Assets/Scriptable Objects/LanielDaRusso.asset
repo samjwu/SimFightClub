@@ -18,5 +18,5 @@ MonoBehaviour:
   damage: 5
   dodgeChance: 25
   attackSpeed: 100
-  defense: 1
-  criticalStrikeDamage: 200
+  defense: 0
+  criticalStrikeDamage: 150
