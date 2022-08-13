@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight.unity
     guid: 198c98e35f1883e4397bbe732dd98b60
+  - enabled: 1
+    path: Assets/Scenes/Play Again.unity
+    guid: 2d866850048b4ca4e9006a86c8a0b896
   m_configObjects: {}
