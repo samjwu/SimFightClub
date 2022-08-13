@@ -39,6 +39,18 @@ public class FightManager : MonoBehaviour
 
     void CalculateFightTurn()
     {
+        if (_currentEnemyHp <= 0)
+        {
+            _explanation.text = "You won the fight!";
+            return;
+        }
+
+        if (_currentPlayerHp <= 0)
+        {
+            _explanation.text = "You lost the fight!";
+            return;
+        }
+
         double playerHitChance = 100 - _currentEnemy.dodgeChance;
         double enemyHitChance = 100 - PlayerStatistics.dodgeChance;
 
