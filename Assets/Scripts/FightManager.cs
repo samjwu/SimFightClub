@@ -8,6 +8,9 @@ public class FightManager : MonoBehaviour
     public List<EnemyData> enemyList;
 
     [SerializeField]
+    Object _gameOverScene;
+
+    [SerializeField]
     TextMeshProUGUI _playerHp;
     [SerializeField]
     TextMeshProUGUI _enemyName;
@@ -54,6 +57,7 @@ public class FightManager : MonoBehaviour
         if (_currentPlayerHp <= 0)
         {
             _explanation.text = "You lost the fight!";
+            _continueButton.nextScene = _gameOverScene;
             _continueButton.gameObject.SetActive(true);
             CancelInvoke();
             return;

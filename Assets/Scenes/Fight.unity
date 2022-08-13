@@ -1284,6 +1284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 11400000, guid: 474be022300931a419b95f2814a70895, type: 2}
+  _gameOverScene: {fileID: 102900000, guid: 2d866850048b4ca4e9006a86c8a0b896, type: 3}
   _playerHp: {fileID: 774353135}
   _enemyName: {fileID: 1274117392}
   _enemyImage: {fileID: 156307704}
