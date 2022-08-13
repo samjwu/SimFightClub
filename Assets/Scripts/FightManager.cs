@@ -16,6 +16,8 @@ public class FightManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI _enemyHp;
     [SerializeField]
+    ContinueButton _continueButton;
+    [SerializeField]
     TextMeshProUGUI _explanation;
 
     EnemyData _currentEnemy;
@@ -30,6 +32,8 @@ public class FightManager : MonoBehaviour
         _enemyName.text = _currentEnemy.enemyName;
         _enemyImage.texture = _currentEnemy.enemyPicture;
 
+        _continueButton.gameObject.SetActive(false);
+
         _currentPlayerHp = PlayerStatistics.hp;
         _currentEnemyHp = _currentEnemy.hp;
         _turnNumber = 0;
@@ -42,12 +46,16 @@ public class FightManager : MonoBehaviour
         if (_currentEnemyHp <= 0)
         {
             _explanation.text = "You won the fight!";
+            _continueButton.gameObject.SetActive(true);
+            CancelInvoke();
             return;
         }
 
         if (_currentPlayerHp <= 0)
         {
             _explanation.text = "You lost the fight!";
+            _continueButton.gameObject.SetActive(true);
+            CancelInvoke();
             return;
         }
 
