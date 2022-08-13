@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03228b3515d0a7458d2c57673708f4e, type: 3}
+  m_Name: IeonidasL
+  m_EditorClassIdentifier: 
+  enemyName: Ieonias L
+  enemyPicture: {fileID: 2800000, guid: 8d33c2f2ba2360349a7b2020dc0e0bd7, type: 3}
+  hp: 300
+  damage: 50
+  dodgeChance: 0
+  attackSpeed: 100
+  defense: 0
+  criticalStrikeDamage: 200
