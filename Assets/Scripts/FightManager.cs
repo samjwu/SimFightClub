@@ -28,7 +28,7 @@ public class FightManager : MonoBehaviour
     double _currentPlayerHp;
     double _currentEnemyHp;
     int _turnNumber;
-    double _playerDoubleHitCounter = 100;
+    double _playerDoubleHitCounter = 200;
 
     void Start()
     {
@@ -90,7 +90,7 @@ public class FightManager : MonoBehaviour
         string playerTurn2 = "";
         if (_playerDoubleHitCounter <= 0)
         {
-            _playerDoubleHitCounter += 100;
+            _playerDoubleHitCounter += 200;
             playerTurn2 = "Second attack! " + CalculateFighterTurn(_currentEnemy.dodgeChance,
                 PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage,
                 _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text);
