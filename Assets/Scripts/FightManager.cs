@@ -54,7 +54,7 @@ public class FightManager : MonoBehaviour
     {
         if (_currentEnemyHp <= 0)
         {
-            _explanation.text = "You won the fight!";
+            _explanation.text = "You won the fight!\n You have gained 5 additional stat points for the next fight.";
             PlayerStatistics.statPoints = 5;
 
             PlayerStatistics.tier += 1;
@@ -71,7 +71,8 @@ public class FightManager : MonoBehaviour
 
         if (_currentPlayerHp <= 0)
         {
-            _explanation.text = "You lost the fight! You lose!";
+            _explanation.text = "You lost the fight! You lose!\nTry again. You have gained one additional stat point on your new start.";
+            PlayerStatistics.lossCount += 1;
 
             _continueButton.nextScene = _gameOverScene;
 

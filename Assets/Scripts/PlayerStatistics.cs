@@ -19,6 +19,7 @@ public class PlayerStatistics : MonoBehaviour
     public static int intelligence = 0;
     public static int statPoints = STARTING_STAT_POINTS;
 
+    public static int lossCount = 0;
     public static int tier = 0;
 
     public static double hp;
