@@ -116,13 +116,13 @@ public class PlayerStatistics : MonoBehaviour
 
     void CalculateStatistics()
     {
-        hp = 100 + strength * 25;
+        hp = 100 + strength * 10;
         damage = 1 + strength * 2 + agility + intelligence;
-        dodgeChance = 10 + agility * 2;
+        dodgeChance = 10 + agility * 1;
         attackSpeed = 100 + agility * 5;
         defense = intelligence / 2;
-        criticalStrikeDamage = 100 + intelligence * 100;
-        criticalStrikeChance = 10 + intelligence * 2;
+        criticalStrikeDamage = 100 + intelligence * 10;
+        criticalStrikeChance = 10 + intelligence * 1;
     }
 
     void UpdateStatisticsText()
