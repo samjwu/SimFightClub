@@ -70,29 +70,24 @@ public class PlayerStatistics : MonoBehaviour
 
     void ChangeStatPoints(StatType type, int value)
     {
-        if (statPoints <= 0)
-        {
-            return;
-        }
-
         switch (type)
         {
             case StatType.Strength:
-                if (-value > strength)
+                if (IsInvalidOperation(strength, value, statPoints))
                 {
                     return;
                 }
                 strength += value;
                 break;
             case StatType.Agility:
-                if (-value > agility)
+                if (IsInvalidOperation(agility, value, statPoints))
                 {
                     return;
                 }
                 agility += value;
                 break;
             case StatType.Intelligence:
-                if (-value > intelligence)
+                if (IsInvalidOperation(intelligence, value, statPoints))
                 {
                     return;
                 }
@@ -107,6 +102,16 @@ public class PlayerStatistics : MonoBehaviour
         CalculateStatistics();
 
         UpdateStatisticsText();
+    }
+
+    bool IsInvalidOperation(int stat, int change, int points)
+    {
+        if ((change > 0 && points <= 0) || (change < 0 && stat <= 0))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     void CalculateStatistics()
