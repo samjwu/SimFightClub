@@ -12,7 +12,7 @@ public class PlayerStatistics : MonoBehaviour
         Intelligence = 2
     }
 
-    public const int STARTING_STAT_POINTS = 15;
+    public const int STARTING_STAT_POINTS = 5;
 
     public static int strength = 0;
     public static int agility = 0;
@@ -68,6 +68,11 @@ public class PlayerStatistics : MonoBehaviour
 
     void ChangeStatPoints(StatType type, int value)
     {
+        if (statPoints <= 0)
+        {
+            return;
+        }
+
         switch (type)
         {
             case StatType.Strength:
