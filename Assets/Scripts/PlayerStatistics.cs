@@ -115,7 +115,7 @@ public class PlayerStatistics : MonoBehaviour
         damage = 1 + strength * 2 + agility + intelligence;
         dodgeChance = 10 + agility * 5;
         attackSpeed = 100 + agility * 10;
-        defense = intelligence / 4;
+        defense = intelligence / 2;
         criticalStrikeDamage = 100 + intelligence * 100;
         criticalStrikeChance = 10 + intelligence;
     }

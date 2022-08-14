@@ -104,7 +104,7 @@ public class FightManager : MonoBehaviour
         {
             opposingHp = Mathf.Max(0, (float)(opposingHp - damageDealt));
             opposingText.text = $"HP: {opposingHp}";
-            explanation = $"{fighterName} dealt {damageDealt} damage to {opposingName}!";
+            explanation = (isHitCritical ? "Critical strike! ": "") + $"{fighterName} dealt {damageDealt} damage to {opposingName}!";
         }
         else
         {
