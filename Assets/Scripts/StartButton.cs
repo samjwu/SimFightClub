@@ -19,6 +19,8 @@ public class StartButton : MonoBehaviour
         PlayerStatistics.intelligence = 0;
         PlayerStatistics.statPoints = PlayerStatistics.STARTING_STAT_POINTS;
 
+        PlayerStatistics.tier = 0;
+
         SceneManager.LoadScene("Stat Picker");
     }
 }

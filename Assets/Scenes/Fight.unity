@@ -1282,10 +1282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fd9894c47e9de4a80d24dac7c64574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList:
-  - {fileID: 11400000, guid: 39ee79dac6b994647b5541ab864de90e, type: 2}
-  - {fileID: 11400000, guid: 474be022300931a419b95f2814a70895, type: 2}
-  - {fileID: 11400000, guid: f895e1050634fe048916dfeed68927ea, type: 2}
+  enemyTiers:
+  - {fileID: 11400000, guid: bf510c5e209b6844cb2d2db2135dac82, type: 2}
+  - {fileID: 11400000, guid: 96f29ff7c94278a45a6e9d177c428f17, type: 2}
+  - {fileID: 11400000, guid: 8ac4635953f8ff949872b9f993ab5917, type: 2}
   _gameOverScene: {fileID: 102900000, guid: 2d866850048b4ca4e9006a86c8a0b896, type: 3}
   _playerHp: {fileID: 774353135}
   _enemyName: {fileID: 1274117392}

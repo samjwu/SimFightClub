@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FightManager : MonoBehaviour
 {
-    public List<EnemyData> enemyList;
+    public List<EnemyTier> enemyTiers;
 
     [SerializeField]
     Object _gameOverScene;
@@ -31,7 +31,8 @@ public class FightManager : MonoBehaviour
 
     void Start()
     {
-        _currentEnemy = enemyList[Random.Range(0, enemyList.Count)];
+        List<EnemyData> enemies = enemyTiers[PlayerStatistics.tier].enemyList;
+        _currentEnemy = enemies[Random.Range(0, enemies.Count)];
         _enemyName.text = _currentEnemy.enemyName;
         _enemyImage.texture = _currentEnemy.enemyPicture;
 
@@ -49,6 +50,7 @@ public class FightManager : MonoBehaviour
         if (_currentEnemyHp <= 0)
         {
             _explanation.text = "You won the fight!";
+            PlayerStatistics.tier += 1;
             _continueButton.gameObject.SetActive(true);
             CancelInvoke();
             return;
