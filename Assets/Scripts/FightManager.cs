@@ -82,13 +82,25 @@ public class FightManager : MonoBehaviour
         }
 
         _turnNumber++;
-        _explanation.text = $"Turn {_turnNumber}" + '\n' + 
-            CalculateFighterTurn(_currentEnemy.dodgeChance, 
-                PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage, 
-                _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text) + '\n' + 
-            CalculateFighterTurn(PlayerStatistics.dodgeChance,
+
+        string playerTurn = CalculateFighterTurn(_currentEnemy.dodgeChance,
+                PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage,
+                _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text);
+        _playerDoubleHitCounter -= PlayerStatistics.attackSpeed;
+        string playerTurn2 = "";
+        if (_playerDoubleHitCounter <= 0)
+        {
+            _playerDoubleHitCounter += 100;
+            playerTurn2 = "Second attack! " + CalculateFighterTurn(_currentEnemy.dodgeChance,
+                PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage,
+                _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text);
+        }
+
+        string enemyTurn = CalculateFighterTurn(PlayerStatistics.dodgeChance,
                 0.1, _currentEnemy.damage, _currentEnemy.criticalStrikeDamage,
                 PlayerStatistics.defense, ref _currentPlayerHp, _playerHp, _enemyName.text, "Player");
+
+        _explanation.text = $"Turn {_turnNumber}" + '\n' + playerTurn + '\n' + enemyTurn + '\n' + playerTurn2;
     }
 
     string CalculateFighterTurn(double opposingDodgeChance, double criticalStrikeChance, double damage, double criticalStrikeDamage,
