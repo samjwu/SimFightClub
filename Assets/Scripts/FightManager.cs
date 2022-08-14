@@ -50,6 +50,7 @@ public class FightManager : MonoBehaviour
         if (_currentEnemyHp <= 0)
         {
             _explanation.text = "You won the fight!";
+            PlayerStatistics.statPoints = 5;
             PlayerStatistics.tier += 1;
             _continueButton.gameObject.SetActive(true);
             CancelInvoke();
