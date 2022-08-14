@@ -27,6 +27,7 @@ public class PlayerStatistics : MonoBehaviour
     public static double attackSpeed;
     public static double defense;
     public static double criticalStrikeDamage;
+    public static double criticalStrikeChance;
 
     [SerializeField]
     Button _plusStrButton;
@@ -110,11 +111,12 @@ public class PlayerStatistics : MonoBehaviour
     void CalculateStatistics()
     {
         hp = 100 + strength * 25;
-        damage = 1 + strength;
+        damage = 1 + strength * 2 + agility + intelligence;
         dodgeChance = 10 + agility * 5;
         attackSpeed = 100 + agility * 10;
         defense = intelligence / 4;
         criticalStrikeDamage = 100 + intelligence * 100;
+        criticalStrikeChance = 10 + intelligence;
     }
 
     void UpdateStatisticsText()
@@ -130,6 +132,7 @@ public class PlayerStatistics : MonoBehaviour
             $"Dodge Chance: {dodgeChance}%\n" +
             $"Attack Speed: {attackSpeed}%\n" +
             $"Defense: {defense}\n" +
-            $"Critical Strike Damage: {criticalStrikeDamage}%";
+            $"Critical Strike Damage: {criticalStrikeDamage}%\n" +
+            $"Critical Strike Chance: {criticalStrikeChance}%";
     }
 }

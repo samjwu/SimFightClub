@@ -28,6 +28,7 @@ public class FightManager : MonoBehaviour
     double _currentPlayerHp;
     double _currentEnemyHp;
     int _turnNumber;
+    double _playerDoubleHitCounter = 100;
 
     void Start()
     {
@@ -39,7 +40,11 @@ public class FightManager : MonoBehaviour
         _continueButton.gameObject.SetActive(false);
 
         _currentPlayerHp = PlayerStatistics.hp;
+        _playerHp.text = $"HP: {_currentPlayerHp}";
+
         _currentEnemyHp = _currentEnemy.hp;
+        _enemyHp.text = $"HP: {_currentEnemyHp}";
+
         _turnNumber = 0;
 
         InvokeRepeating(nameof(CalculateFightTurn), 1.0f, 1.0f);
@@ -51,7 +56,14 @@ public class FightManager : MonoBehaviour
         {
             _explanation.text = "You won the fight!";
             PlayerStatistics.statPoints = 5;
+
             PlayerStatistics.tier += 1;
+            if (PlayerStatistics.tier >= 3)
+            {
+                _explanation.text += " You win!";
+                _continueButton.nextScene = _gameOverScene;
+            }
+
             _continueButton.gameObject.SetActive(true);
             CancelInvoke();
             return;
@@ -59,52 +71,44 @@ public class FightManager : MonoBehaviour
 
         if (_currentPlayerHp <= 0)
         {
-            _explanation.text = "You lost the fight!";
+            _explanation.text = "You lost the fight! You lose!";
+
             _continueButton.nextScene = _gameOverScene;
+
             _continueButton.gameObject.SetActive(true);
             CancelInvoke();
             return;
         }
 
-        double playerHitChance = 100 - _currentEnemy.dodgeChance;
-        double enemyHitChance = 100 - PlayerStatistics.dodgeChance;
-
-        bool isPlayerAccurate = playerHitChance >= Random.Range(0, 101);
-        bool isEnemyAccurate = enemyHitChance >= Random.Range(0, 101);
-
-        bool isPlayerHitCritical = 0.1 >= Random.Range(0, 101);
-        bool isEnemyHitCritical = 0.1 >= Random.Range(0, 101);
-
-        double playerDamageDealt = PlayerStatistics.damage * (isPlayerHitCritical ? PlayerStatistics.criticalStrikeDamage : 1) - _currentEnemy.defense;
-        double enemyDamageDealt = _currentEnemy.damage * (isEnemyHitCritical ? _currentEnemy.criticalStrikeDamage / 100 : 1) - PlayerStatistics.defense;
-
         _turnNumber++;
-        string turnExplanation = $"Turn {_turnNumber}";
-        string playerExplanation;
-        string enemyExplanation;
+        _explanation.text = $"Turn {_turnNumber}" + '\n' + 
+            CalculateFighterTurn(_currentEnemy.dodgeChance, 
+                PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage, 
+                _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text) + '\n' + 
+            CalculateFighterTurn(PlayerStatistics.dodgeChance,
+                0.1, _currentEnemy.damage, _currentEnemy.criticalStrikeDamage,
+                PlayerStatistics.defense, ref _currentPlayerHp, _playerHp, _enemyName.text, "Player");
+    }
 
-        if (isPlayerAccurate)
+    string CalculateFighterTurn(double opposingDodgeChance, double criticalStrikeChance, double damage, double criticalStrikeDamage,
+        double opposingDefense, ref double opposingHp, TextMeshProUGUI opposingText, string fighterName, string opposingName)
+    {
+        double hitChance = 100 - opposingDodgeChance;
+        bool isHitAccurate = hitChance >= Random.Range(0, 101);
+        bool isHitCritical = criticalStrikeChance >= Random.Range(0, 101);
+        double damageDealt = damage * (isHitCritical ? criticalStrikeDamage / 100 : 1) - opposingDefense;
+
+        string explanation;
+        if (isHitAccurate)
         {
-            _currentEnemyHp = Mathf.Max(0, (float)(_currentEnemyHp - playerDamageDealt));
-            _enemyHp.text = $"HP: {_currentEnemyHp}";
-            playerExplanation = $"Player dealt {playerDamageDealt} damage to {_enemyName.text}!";
+            opposingHp = Mathf.Max(0, (float)(opposingHp - damageDealt));
+            opposingText.text = $"HP: {opposingHp}";
+            explanation = $"{fighterName} dealt {damageDealt} damage to {opposingName}!";
         }
         else
         {
-            playerExplanation = "Player's attack missed!";
+            explanation = $"{fighterName}'s attack missed!";
         }
-
-        if (isEnemyAccurate)
-        {
-            _currentPlayerHp = Mathf.Max(0, (float)(_currentPlayerHp - enemyDamageDealt));
-            _playerHp.text = $"HP: {_currentPlayerHp}";
-            enemyExplanation = $"{_enemyName.text} dealt {enemyDamageDealt} damage to Player!";
-        }
-        else
-        {
-            enemyExplanation = $"{_enemyName.text}'s attack missed!";
-        }
-
-        _explanation.text = turnExplanation + '\n' + playerExplanation + '\n' + enemyExplanation;
+        return explanation;
     }
 }
