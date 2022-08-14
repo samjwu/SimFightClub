@@ -28,7 +28,7 @@ public class FightManager : MonoBehaviour
     double _currentPlayerHp;
     double _currentEnemyHp;
     int _turnNumber;
-    double _playerDoubleHitCounter = 200;
+    double _playerDoubleHitCounter = 100;
 
     void Start()
     {
@@ -86,11 +86,11 @@ public class FightManager : MonoBehaviour
         string playerTurn = CalculateFighterTurn(_currentEnemy.dodgeChance,
                 PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage,
                 _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text);
-        _playerDoubleHitCounter -= PlayerStatistics.attackSpeed;
         string playerTurn2 = "";
+        _playerDoubleHitCounter += 100 - PlayerStatistics.attackSpeed;
         if (_playerDoubleHitCounter <= 0)
         {
-            _playerDoubleHitCounter += 200;
+            _playerDoubleHitCounter += 100;
             playerTurn2 = "Second attack! " + CalculateFighterTurn(_currentEnemy.dodgeChance,
                 PlayerStatistics.criticalStrikeChance, PlayerStatistics.damage, PlayerStatistics.criticalStrikeDamage,
                 _currentEnemy.defense, ref _currentEnemyHp, _enemyHp, "Player", _enemyName.text);
@@ -109,14 +109,14 @@ public class FightManager : MonoBehaviour
         double hitChance = 100 - opposingDodgeChance;
         bool isHitAccurate = hitChance >= Random.Range(0, 101);
         bool isHitCritical = criticalStrikeChance >= Random.Range(0, 101);
-        double damageDealt = damage * (isHitCritical ? criticalStrikeDamage / 100 : 1) - opposingDefense;
+        double damageDealt = Mathf.Max((float)(damage * (isHitCritical ? criticalStrikeDamage / 100 : 1) - opposingDefense), 1f);
 
         string explanation;
         if (isHitAccurate)
         {
             opposingHp = Mathf.Max(0, (float)(opposingHp - damageDealt));
             opposingText.text = $"HP: {opposingHp}";
-            explanation = (isHitCritical ? "Critical strike! ": "") + $"{fighterName} dealt {damageDealt} damage to {opposingName}!";
+            explanation = (isHitCritical ? "Critical strike! " : "") + $"{fighterName} dealt {damageDealt} damage to {opposingName}!";
         }
         else
         {

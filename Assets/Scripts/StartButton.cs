@@ -14,9 +14,6 @@ public class StartButton : MonoBehaviour
 
     void StartGame()
     {
-        PlayerStatistics.strength = 0;
-        PlayerStatistics.agility = 0;
-        PlayerStatistics.intelligence = 0;
         PlayerStatistics.statPoints = PlayerStatistics.STARTING_STAT_POINTS + PlayerStatistics.lossCount;
 
         PlayerStatistics.tier = 0;
