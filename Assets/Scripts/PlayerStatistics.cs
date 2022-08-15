@@ -118,8 +118,8 @@ public class PlayerStatistics : MonoBehaviour
     {
         hp = 100 + strength * 10;
         damage = 1 + strength * 2 + agility + intelligence;
-        dodgeChance = 10 + agility * 1;
-        attackSpeed = 100 + agility * 5;
+        dodgeChance = 10 + agility * 2;
+        attackSpeed = 100 + agility * 2;
         defense = intelligence / 2;
         criticalStrikeDamage = 100 + intelligence * 10;
         criticalStrikeChance = 10 + intelligence * 1;

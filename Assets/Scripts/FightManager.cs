@@ -47,7 +47,7 @@ public class FightManager : MonoBehaviour
 
         _turnNumber = 0;
 
-        InvokeRepeating(nameof(CalculateFightTurn), 1.0f, 1.0f);
+        InvokeRepeating(nameof(CalculateFightTurn), 1.0f, 2.0f);
     }
 
     void CalculateFightTurn()
