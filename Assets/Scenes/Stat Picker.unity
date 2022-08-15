@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 254183584}
   - component: {fileID: 254183583}
   m_Layer: 5
-  m_Name: ContinueText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Continue
+  m_text: Start Fight
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 498695284}
   - component: {fileID: 498695287}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: FightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e1020bd64497b4089b40877571c6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: {fileID: 102900000, guid: f66ab167cccab0d44b00283e7538fe7e, type: 3}
+  nextSceneName: Fight
 --- !u!1 &511382236
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class FightManager : MonoBehaviour
     public List<EnemyTier> enemyTiers;
 
     [SerializeField]
-    Object _gameOverScene;
+    string _gameOverScene;
 
     [SerializeField]
     TextMeshProUGUI _playerHp;
@@ -61,7 +61,7 @@ public class FightManager : MonoBehaviour
             if (PlayerStatistics.tier >= 3)
             {
                 _explanation.text += " You win!";
-                _continueButton.nextScene = _gameOverScene;
+                _continueButton.nextSceneName = _gameOverScene;
             }
 
             _continueButton.gameObject.SetActive(true);
@@ -74,7 +74,7 @@ public class FightManager : MonoBehaviour
             _explanation.text = "You lost the fight! You lose!\nTry again. You have gained one additional stat point on your new start.";
             PlayerStatistics.lossCount += 1;
 
-            _continueButton.nextScene = _gameOverScene;
+            _continueButton.nextSceneName = _gameOverScene;
 
             _continueButton.gameObject.SetActive(true);
             CancelInvoke();

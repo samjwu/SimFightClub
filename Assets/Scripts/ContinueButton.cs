@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ContinueButton : MonoBehaviour
 {
-    public Object nextScene;
+    public string nextSceneName;
 
     Button _button;
 
@@ -16,6 +16,6 @@ public class ContinueButton : MonoBehaviour
 
     void ContinueToScene()
     {
-        SceneManager.LoadScene(nextScene.name);
+        SceneManager.LoadScene(nextSceneName);
     }
 }

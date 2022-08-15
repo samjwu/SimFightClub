@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e1020bd64497b4089b40877571c6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: {fileID: 102900000, guid: e7fcbc334c50d2249b641c391ffd3e23, type: 3}
+  nextSceneName: Stat Picker
 --- !u!1 &659119478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf510c5e209b6844cb2d2db2135dac82, type: 2}
   - {fileID: 11400000, guid: 96f29ff7c94278a45a6e9d177c428f17, type: 2}
   - {fileID: 11400000, guid: 8ac4635953f8ff949872b9f993ab5917, type: 2}
-  _gameOverScene: {fileID: 102900000, guid: 2d866850048b4ca4e9006a86c8a0b896, type: 3}
+  _gameOverScene: Play Again
   _playerHp: {fileID: 774353135}
   _enemyName: {fileID: 1274117392}
   _enemyImage: {fileID: 156307704}
